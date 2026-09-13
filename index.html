@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Un regalo para ti ❤️</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: white;
+            background:
+                radial-gradient(circle at top, #32145f, #10051c 60%, #050208);
+            overflow-x: hidden;
+        }
+
+        /* ESTRELLAS */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(#ffb6e6 1px, transparent 1px);
+            background-size: 80px 80px, 120px 120px;
+            background-position: 10px 20px, 50px 70px;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        /* CORAZONES */
+
+        .corazon {
+            position: fixed;
+            color: #ff75c8;
+            font-size: 22px;
+            animation: flotar 6s linear infinite;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .c1 {
+            left: 10%;
+            bottom: -30px;
+            animation-delay: 1s;
+        }
+
+        .c2 {
+            left: 30%;
+            bottom: -30px;
+            animation-delay: 3s;
+        }
+
+        .c3 {
+            left: 70%;
+            bottom: -30px;
+            animation-delay: 2s;
+        }
+
+        .c4 {
+            left: 90%;
+            bottom: -30px;
+            animation-delay: 4s;
+        }
+
+        @keyframes flotar {
+
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+
+        }
+
+        /* SECCIONES */
+
+        section {
+            min-height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        section.activo {
+            display: flex;
+        }
+
+        /* INICIO */
+
+        #inicio h1 {
+            font-size: 42px;
+            color: #ff9ddd;
+            text-shadow: 0 0 20px #ff4db8;
+            margin-bottom: 10px;
+        }
+
+        #inicio p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 230px;
+            padding: 14px;
+            border-radius: 10px;
+            border: 2px solid #ff7ac8;
+            background: #170921;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            outline: none;
+        }
+
+        button {
+            margin-top: 18px;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #ff5dbb;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff5dbb;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #error {
+            color: #ff8f8f;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* INTRO */
+
+        #intro h1 {
+            color: #ff9ddd;
+            font-size: 40px;
+            text-shadow: 0 0 15px #ff4db8;
+        }
+
+        #intro p {
+            max-width: 650px;
+            font-size: 21px;
+            line-height: 1.7;
+        }
+
+        /* RECUERDOS */
+
+        #recuerdos h1 {
+            color: #ff9ddd;
+            font-size: 38px;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px #ff4db8;
+        }
+
+        .descripcion {
+            max-width: 600px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .foto-container {
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px 12px 45px 12px;
+            width: 310px;
+            box-shadow: 0 0 25px rgba(255, 105, 190, 0.5);
+            transform: rotate(-1deg);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .flecha {
+            background: transparent;
+            box-shadow: none;
+            color: #ff9ddd;
+            font-size: 42px;
+            padding: 5px;
+            margin: 0;
+        }
+
+        .flecha:hover {
+            color: white;
+            transform: scale(1.15);
+        }
+
+        #frase {
+            max-width: 600px;
+            min-height: 55px;
+            margin: 20px auto 5px;
+            font-size: 19px;
+            color: #ffd3ed;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        #contador {
+            color: #ff9ddd;
+            margin-top: 5px;
+        }
+
+        /* CARTA */
+
+        #carta {
+            padding: 30px 15px;
+        }
+
+        .carta-contenedor {
+            max-width: 750px;
+            background: rgba(15, 5, 25, 0.92);
+            border: 3px solid #f4d35e;
+            padding: 35px;
+            box-shadow: 0 0 30px rgba(244, 211, 94, 0.25);
+            text-align: left;
+        }
+
+        .carta-contenedor h1 {
+            text-align: center;
+            color: #ff9ddd;
+            text-shadow: 0 0 15px #ff4db8;
+        }
+
+        .carta-contenedor p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #f7eefa;
+        }
+
+        .firma {
+            text-align: right;
+            font-size: 20px;
+            color: #ff9ddd !important;
+            margin-top: 30px;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 600px) {
+
+            #inicio h1 {
+                font-size: 32px;
+            }
+
+            #intro h1 {
+                font-size: 32px;
+            }
+
+            #recuerdos h1 {
+                font-size: 30px;
+            }
+
+            .foto-container {
+                gap: 5px;
+            }
+
+            .polaroid {
+                width: 230px;
+                padding: 8px 8px 35px 8px;
+            }
+
+            .polaroid img {
+                height: 280px;
+            }
+
+            .flecha {
+                font-size: 30px;
+            }
+
+            .carta-contenedor {
+                padding: 22px;
+            }
+
+            .carta-contenedor p {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- CORAZONES -->
+
+    <div class="corazon c1">♥</div>
+    <div class="corazon c2">♥</div>
+    <div class="corazon c3">♥</div>
+    <div class="corazon c4">♥</div>
+
+
+    <!-- INICIO -->
+
+    <section id="inicio" class="activo">
+
+        <h1>Tengo algo para ti... ❤️</h1>
+
+        <p>Escribe nuestra fecha especial</p>
+
+        <input
+            type="text"
+            id="fecha"
+            placeholder="DD/MM/AA"
+        >
+
+        <button onclick="entrar()">
+            Abrir mi regalo ❤️
+        </button>
+
+        <p id="error">
+            Esa no es la fecha que buscas 💔
+        </p>
+
+    </section>
+
+
+    <!-- INTRO -->
+
+    <section id="intro">
+
+        <h1>💖 Para ti 💖</h1>
+
+        <p>
+            Hay momentos que pasan rápido,
+            pero cuando son contigo,
+            se quedan para siempre en mi corazón.
+        </p>
+
+        <button onclick="mostrarRecuerdos()">
+            Ver nuestros recuerdos ❤️
+        </button>
+
+    </section>
+
+
+    <!-- RECUERDOS -->
+
+    <section id="recuerdos">
+
+        <h1>RECUERDOS ❤️</h1>
+
+        <p class="descripcion">
+            Cada foto guarda un momento,
+            una sonrisa y una historia
+            que me encanta recordar contigo.
+        </p>
+
+
+        <div class="foto-container">
+
+            <button class="flecha" onclick="anterior()">
+                ❮
+            </button>
+
+
+            <div class="polaroid">
+
+                <img
+                    id="imagen"
+                    src="fotos/foto1.jpeg"
+                    alt="Recuerdo"
+                >
+
+            </div>
+
+
+            <button class="flecha" onclick="siguiente()">
+                ❯
+            </button>
+
+        </div>
+
+
+        <p id="frase">
+            El comienzo de tantos momentos
+            que hoy guardo con cariño. ❤️
+        </p>
+
+        <p id="contador">
+            Foto 1 de 22
+        </p>
+
+
+        <button onclick="mostrarCarta()">
+            Leer la carta 💌
+        </button>
+
+    </section>
+
+
+    <!-- CARTA -->
+
+    <section id="carta">
+
+        <div class="carta-contenedor">
+
+            <h1>
+                Para ti, con todo mi cariño ❤️
+            </h1>
+
+            <p> 
+                Hola mi güerita hermosa.👸
+            </p>
+
+
+            <p>
+                Quiero empezar diciéndote que gracias por estar
+                aquí y por tomarte el tiempo de leer esto.
+            </p>
+
+
+            <p>
+                A veces siento que las palabras no son suficientes
+                para explicar lo mucho que significas para mí,
+                pero aun así quería intentar escribirte todo
+                lo que llevo dentro.
+            </p>
+
+
+            <p>
+                Desde que llegaste a mi vida, has formado parte
+                de muchos momentos que hoy guardo con muchísimo
+                cariño. Por eso quise hacerte este pequeño regalo,
+                para que pudiéramos recordar algunos de ellos.
+            </p>
+
+
+            <p>
+                Me gusta recordar nuestras risas, nuestras
+                conversaciones y todos esos pequeños momentos
+                que quizás parecen simples, pero que para mí
+                significan muchísimo.
+            </p>
+
+
+            <p>
+                Quiero que sepas que te quiero muchísimo y que
+                valoro cada momento que compartimos.
+            </p>
+
+
+            <p>
+                No hice esta página porque necesitara una fecha
+                especial para decirte lo que siento. La hice
+                simplemente porque quería tener un detalle contigo
+                y demostrarte un poquito de todo el cariño que te tengo.
+            </p>
+
+
+            <p>
+                Espero que podamos seguir compartiendo muchos
+                momentos, muchas risas y muchos recuerdos que
+                algún día podamos volver a mirar juntos.
+            </p>
+
+
+            <p>
+                Gracias por formar parte de mi vida y por todos
+                los momentos bonitos que hemos compartido.
+            </p>
+
+
+            <p>
+                Tal vez esta página sea pequeña, pero la hice
+                pensando en ti y con mucho cariño.
+            </p>
+
+
+            <p>
+                Y si algún día vuelves a entrar aquí, quiero que
+                recuerdes que detrás de estas palabras hay alguien
+                que te quiere muchísimo. ❤️
+            </p>
+
+
+            <p class="firma">
+                Con mucho amor🥰,<br>
+                Sergio ❤️ 🥺
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        /* =========================
+           LAS 22 FOTOS
+        ========================= */
+
+        let fotos = [
+
+            "fotos/foto1.jpeg",
+            "fotos/foto2.jpeg",
+            "fotos/foto3.jpeg",
+            "fotos/foto4.jpeg",
+            "fotos/foto5.jpeg",
+            "fotos/foto6.jpeg",
+            "fotos/foto7.jpeg",
+            "fotos/foto8.jpeg",
+            "fotos/foto9.jpeg",
+            "fotos/foto10.jpeg",
+            "fotos/foto11.jpeg",
+            "fotos/foto12.jpeg",
+            "fotos/foto13.jpeg",
+            "fotos/foto14.jpeg",
+            "fotos/foto15.jpeg",
+            "fotos/foto16.jpeg",
+            "fotos/foto17.jpeg",
+            "fotos/foto18.jpeg",
+            "fotos/foto19.jpeg",
+            "fotos/foto20.jpeg",
+            "fotos/foto21.jpeg",
+            "fotos/foto22.jpeg"
+
+        ];
+
+
+        /* =========================
+           FRASES DE CADA FOTO
+        ========================= */
+
+        let frases = [
+
+            "El comienzo de tantos momentos que hoy guardo con cariño. ❤️",
+
+            "Una sonrisa que hace que cualquier momento valga la pena. 💗",
+
+            "De esos momentos sencillos que terminan convirtiéndose en recuerdos inolvidables. ✨",
+
+            "Qué bonito poder mirar atrás y encontrar momentos que me hacen sonreír. 🥹",
+
+            "Si pudiera guardar un momento para siempre, elegiría uno de estos. ❤️",
+
+            "Hay recuerdos que aunque pase el tiempo siguen siendo especiales. 💕",
+
+            "Un momento más que hoy forma parte de mis recuerdos favoritos. ✨",
+
+            "Me encanta recordar todo lo bonito que hemos vivido. ❤️",
+
+            "Una fotografía que guarda mucho más de lo que parece. 💗",
+
+            "Qué bonito es tener recuerdos que todavía me hacen sonreír. 😊",
+
+            "Este momento siempre tendrá un lugar especial para mí. ❤️",
+
+            "Porque contigo hasta los momentos más sencillos se vuelven especiales. 💕",
+
+            "Otro recuerdo que me gusta guardar cerca del corazón. ✨",
+
+            "Hay momentos que quisiera poder repetir una y otra vez. ❤️",
+
+            "Gracias por formar parte de tantos recuerdos bonitos. 💗",
+
+            "Un recuerdo que seguramente volvería a elegir. 🥹",
+
+            "Cada fotografía tiene una historia, y esta es una de las que más quiero. ❤️",
+
+            "Mirar esta foto es volver por un instante a ese momento. 💕",
+
+            "Ojalá podamos seguir creando recuerdos así. ✨",
+
+            "Hay fotografías que dicen cosas que las palabras no pueden explicar. ❤️",
+
+            "Otro pedacito de nuestra historia que quiero conservar. 💗",
+
+            "Y este es uno de esos recuerdos que nunca quiero olvidar. ❤️"
+
+        ];
+
+
+        let posicion = 0;
+
+
+        /* =========================
+           CAMBIAR SECCIÓN
+        ========================= */
+
+        function cambiarSeccion(id) {
+
+            document.querySelectorAll("section").forEach(function(seccion) {
+
+                seccion.classList.remove("activo");
+
+            });
+
+            document.getElementById(id).classList.add("activo");
+
+        }
+
+
+        /* =========================
+           ENTRAR CON LA FECHA
+        ========================= */
+
+        function entrar() {
+
+            let fecha = document.getElementById("fecha").value.trim();
+
+            if (fecha === "19/10/22") {
+
+                document.getElementById("error").style.display = "none";
+
+                cambiarSeccion("intro");
+
+            } else {
+
+                document.getElementById("error").style.display = "block";
+
+            }
+
+        }
+
+
+        /* =========================
+           MOSTRAR RECUERDOS
+        ========================= */
+
+        function mostrarRecuerdos() {
+
+            cambiarSeccion("recuerdos");
+
+        }
+
+
+        /* =========================
+           SIGUIENTE FOTO
+        ========================= */
+
+        function siguiente() {
+
+            posicion++;
+
+            if (posicion >= fotos.length) {
+
+                posicion = 0;
+
+            }
+
+            actualizarFoto();
+
+        }
+
+
+        /* =========================
+           FOTO ANTERIOR
+        ========================= */
+
+        function anterior() {
+
+            posicion--;
+
+            if (posicion < 0) {
+
+                posicion = fotos.length - 1;
+
+            }
+
+            actualizarFoto();
+
+        }
+
+
+        /* =========================
+           ACTUALIZAR FOTO + FRASE
+        ========================= */
+
+        function actualizarFoto() {
+
+            document.getElementById("imagen").src = fotos[posicion];
+
+            document.getElementById("frase").innerText = frases[posicion];
+
+            document.getElementById("contador").innerText =
+                "Foto " + (posicion + 1) + " de 22";
+
+        }
+
+
+        /* =========================
+           MOSTRAR CARTA
+        ========================= */
+
+        function mostrarCarta() {
+
+            cambiarSeccion("carta");
+
+        }
+
+    </script>
+
+</body>
+
+</html>
